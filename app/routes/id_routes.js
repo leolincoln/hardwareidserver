@@ -12,12 +12,14 @@ module.exports = function(app,db){
         });
     });
     app.get('/ids',(req,res)=>{
-        db.collection('ids').find({},(err,item) =>{
+        db.collection('ids').find({}).toArray((err,result) =>{
             if (err) {
                 res.send({'error': 'An error has occurred'});
             }
             else{
-                res.send(item)
+                console.log('item is:');
+                console.log(result);
+                res.send(result);
             }
         });
     });
